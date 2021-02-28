@@ -6,8 +6,6 @@
 
 ## Bug fixes and other changes
 
-* Installing from source now requires [Bazel](https://docs.bazel.build/versions/master/install.html)>=2.0.0.
-
 ## Breaking changes
 
 ## Deprecations

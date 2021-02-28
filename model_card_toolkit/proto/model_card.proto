@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 package third_party.py.model_card_toolkit;
 
@@ -46,7 +46,7 @@ message License {
 
 message Reference {
   // A reference to a resource.
-  optional string reference = 1;
+  string reference = 1;
 }
 
 // A citation for the model.
@@ -56,7 +56,7 @@ message Citation {
   optional string style = 1;
 
   // The citation
-  optional string citation = 2;
+  string citation = 2;
 }
 
 // This section provides a general, high-level description of the model.
@@ -94,7 +94,7 @@ message Graphic {
   optional string name = 1;
 
   // The image, encoded as a base64 string.
-  optional bytes image = 2;
+  bytes image = 2;
 }
 
 // A collection of graphics.
@@ -124,7 +124,8 @@ message SensitiveData {
 // The next tag number is 6.
 message Dataset {
   // The name of the dataset.
-  optional string name = 1;
+  string name = 1;
+
   // A link to the dataset.
   optional string link = 2;
 
@@ -174,35 +175,35 @@ message QuantitativeAnalysis {
 // A type of user for a model.
 message User {
   // A description of a user.
-  optional string description = 1;
+  string description = 1;
 }
 
 // A type of use case for a model.
 message UseCase {
   // A description of a use case.
-  optional string description = 1;
+  string description = 1;
 }
 
 // A limitation a model.
 message Limitation {
   // A description of the limitation.
-  optional string description = 1;
+  string description = 1;
 }
 
 // A tradeoff for a model.
 message Tradeoff {
   // A description of the tradeoff.
-  optional string description = 1;
+  string description = 1;
 }
 
 // Information about risks involved when using the model.
 // The next tag number is 3.
 message Risk {
   // The name of the risk.
-  optional string name = 1;
+  string name = 1;
 
   // A mitigation strategy that you've implemented, or one you suggest to users.
-  optional string mitigation_strategy = 2;
+  string mitigation_strategy = 2;
 }
 
 // Considerations related to model construction, training, and application.
@@ -234,14 +235,14 @@ message Considerations {
 // The next tag number is 5.
 message ModelCard {
   // Descriptive metadata for the model.
-  optional ModelDetails model_details = 1;
+  ModelDetails model_details = 1;
 
   // Technical metadata for the model.
-  optional ModelParameters model_parameters = 2;
+  ModelParameters model_parameters = 2;
 
   // Quantitative analysis of model performance.
-  optional QuantitativeAnalysis quantitative_analysis = 3;
+  QuantitativeAnalysis quantitative_analysis = 3;
 
   // Any considerations related to model construction, training, and application
-  optional Considerations considerations = 4;
+  Considerations considerations = 4;
 }
