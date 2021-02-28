@@ -18,63 +18,59 @@ from setuptools import find_packages
 from setuptools import setup
 
 REQUIRED_PACKAGES = [
-    'absl-py>=0.9,<0.11',
-    'semantic-version>=2.8.0,<3',
-    'jinja2>=2.10,<3',
-    'matplotlib>=3.2.0,<4',
-    'jsonschema>=3.2.0,<4',
-    'tensorflow-data-validation>=0.26.0,<0.27.0',
-    'tensorflow-model-analysis>=0.26.0,<0.27.0',
-    'tensorflow-metadata>=0.26.0,<0.27.0',
-    'ml-metadata>=0.26.0,<0.27.0',
+    "absl-py>=0.9,<0.11",
+    "semantic-version>=2.8.0,<3",
+    "jinja2>=2.10,<3",
+    "matplotlib>=3.2.0,<4",
+    "jsonschema>=3.2.0,<4",
+    "tensorflow-data-validation>=0.26.0,<0.27.0",
+    "tensorflow-model-analysis>=0.26.0,<0.27.0",
+    "tensorflow-metadata>=0.26.0,<0.27.0",
+    "ml-metadata>=0.26.0,<0.27.0",
     'dataclasses;python_version<"3.7"',
 ]
 
 # Get version from version module.
-with open('model_card_toolkit/version.py') as fp:
-  globals_dict = {}
-  exec(fp.read(), globals_dict)  # pylint: disable=exec-used
-__version__ = globals_dict['__version__']
+with open("model_card_toolkit/version.py") as fp:
+    globals_dict = {}
+    exec(fp.read(), globals_dict)  # pylint: disable=exec-used
+__version__ = globals_dict["__version__"]
 
-with open('README.md', 'r', encoding='utf-8') as fh:
-  _LONG_DESCRIPTION = fh.read()
+with open("README.md", "r", encoding="utf-8") as fh:
+    _LONG_DESCRIPTION = fh.read()
 
 setup(
-    name='model-card-toolkit',
+    name="model-card",
     version=__version__,
-    description='Model Card Toolkit',
+    description="Model Card Toolkit",
     long_description=_LONG_DESCRIPTION,
-    long_description_content_type='text/markdown',
-    url='https://github.com/tensorflow/model-card-toolkit',
-    author='Google LLC',
-    author_email='tensorflow-extended-dev@googlegroups.com',
+    long_description_content_type="text/markdown",
+    url="https://github.com/model-card/model-card",
+    author="Adrin Jalali",
+    author_email="adrin.jalali@gmail.com",
     packages=find_packages(),
-    package_data={
-        'model_card_toolkit': [
-            'schema/**/*.json', 'template/**/*.jinja'
-        ]
-    },
-    python_requires='>=3.6,<4',
+    package_data={"model_card": ["schema/**/*.json", "template/**/*.jinja"]},
+    python_requires=">=3.6,<4",
     install_requires=REQUIRED_PACKAGES,
     tests_require=REQUIRED_PACKAGES,
     # PyPI package information.
     classifiers=[
-        'Development Status :: 4 - Beta',
-        'Intended Audience :: Developers',
-        'Intended Audience :: Education',
-        'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: Apache Software License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3 :: Only',
-        'Topic :: Scientific/Engineering',
-        'Topic :: Scientific/Engineering :: Mathematics',
-        'Topic :: Scientific/Engineering :: Artificial Intelligence',
-        'Topic :: Software Development',
-        'Topic :: Software Development :: Libraries',
-        'Topic :: Software Development :: Libraries :: Python Modules',
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Education",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Scientific/Engineering :: Mathematics",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "Topic :: Software Development",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    license='Apache 2.0',
-    keywords='model card toolkit ml metadata machine learning',
+    license="Apache 2.0",
+    keywords="model card toolkit ml metadata machine learning",
 )
