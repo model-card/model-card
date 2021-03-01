@@ -16,6 +16,7 @@
 
 from setuptools import find_packages
 from setuptools import setup
+from itertools import chain
 
 REQUIRED_PACKAGES = [
     "absl-py>=0.9,<0.11",
@@ -23,13 +24,19 @@ REQUIRED_PACKAGES = [
     "jinja2>=2.10,<3",
     "matplotlib>=3.2.0,<4",
     "jsonschema>=3.2.0,<4",
-    "tensorflow-data-validation>=0.26.0,<0.27.0",
-    "tensorflow-model-analysis>=0.26.0,<0.27.0",
-    "tensorflow-metadata>=0.26.0,<0.27.0",
-    "ml-metadata>=0.26.0,<0.27.0",
     'dataclasses;python_version<"3.7"',
 ]
-
+EXTRAS_REQUIRE = {
+    "tensorflow": [
+        "tensorflow-data-validation>=0.26.0,<0.27.0",
+        "tensorflow-model-analysis>=0.26.0,<0.27.0",
+        "tensorflow-metadata>=0.26.0,<0.27.0",
+        "ml-metadata>=0.26.0,<0.27.0",
+    ]
+}
+TESTS_REQUIRE = list(
+    set(chain(*EXTRAS_REQUIRE.values(), REQUIRED_PACKAGES))
+)
 # Get version from version module.
 with open("model_card_toolkit/version.py") as fp:
     globals_dict = {}
@@ -48,11 +55,12 @@ setup(
     url="https://github.com/model-card/model-card",
     author="Adrin Jalali",
     author_email="adrin.jalali@gmail.com",
-    packages=find_packages(),
+    packages=find_packages(include=["model_card_toolkit"]),
     package_data={"model_card": ["schema/**/*.json", "template/**/*.jinja"]},
     python_requires=">=3.6,<4",
     install_requires=REQUIRED_PACKAGES,
-    tests_require=REQUIRED_PACKAGES,
+    extras_require=EXTRAS_REQUIRE,
+    tests_require=TESTS_REQUIRE,
     # PyPI package information.
     classifiers=[
         "Development Status :: 4 - Beta",
