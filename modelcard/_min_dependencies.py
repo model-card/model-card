@@ -10,7 +10,8 @@ PYTEST_MIN_VERSION = "5.0.1"
 # tags can be: 'build', 'install', 'docs', 'examples', 'tests', 'benchmark'
 dependent_packages = {
     "scikit-learn": (SCIKIT_LEARN_MIN_VERSION, "build, install"),
-    "matplotlib": ("2.1.1", "build, install"),
+    "matplotlib": ("2.1.1", "install"),
+    "jsonschema": (">=3.2.0", "install"),
     "pandas": ("0.25.0", "docs, examples, tests"),
     "pytest": (PYTEST_MIN_VERSION, "tests"),
     "pytest-cov": ("2.9.0", "tests"),
