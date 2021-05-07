@@ -1,7 +1,16 @@
 #! /usr/bin/env python
 # License: 3-clause BSD
 from setuptools import setup
-import modelcard
+import builtins
+
+
+# This is a bit (!) hackish: we are setting a global variable so that the
+# main modelcard __init__ can detect if it is being loaded by the setup
+# routine, to avoid attempting to load components.
+builtins.__MODELCARD_SETUP__ = True
+
+
+import modelcard # noqa
 import modelcard._min_dependencies as min_deps  # noqa
 
 VERSION = modelcard.__version__
